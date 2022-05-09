@@ -18,32 +18,6 @@ var (
 
 func serveStreams() { 
 	
-	// db, err := sql.Open("mysql", "mulelocal:!Y4dfg@wer@tcp(127.0.0.1:3307)/sdcd_app")
-	// if err != nil {
-	// 	log.Fatal("Unable to open connection to db")
-	// }
-	// defer db.Close()
-
-	// results, err := db.Query("select * from device")
-	// if err != nil {
-	// 	log.Fatal("Error when fetching device table rows:", err)
-	// }
-	// defer results.Close()
-	// devices := make([]*Device, 0)
-	// for results.Next() {
-	// 	device :=new(Device)
-	// 	if err := results.Scan(&device.id, &device.name, &device.ip,  &device.onDemand, &device.protocol, &device.port, &device.username, &device.password); 
-	// 	err != nil {
-	// 		log.Fatal(err)
-	// 	}
-	// 	devices = append(devices, device)
-
-	// }
-
-	// for _, device := range devices {
-	// 	go RTSPWorkerLoop(device.name, device.protocol + "://" + device.username + ":" + device.password + "@" + device.ip + ":" + device.port, device.onDemand)
-	// }
-
 	for k, v := range Config.Streams {
 		if !v.OnDemand {
 			go RTSPWorkerLoop(k, v.URL, v.OnDemand)

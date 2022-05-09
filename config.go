@@ -131,13 +131,13 @@ func loadConfig() *ConfigST {
 		log.Fatalln(err)
 	}
 	
-	db, err := sql.Open("mysql", "mulelocal:!Y4dfg@wer@tcp(localhost:3307)/sdcd_app")
+	db, err := sql.Open("mysql", "mulelocal:!Y4dfg@wer@tcp(localhost:3306)/sdcd_app")
 	if err != nil {
 		log.Fatal("Unable to open connection to db")
 	}
 	defer db.Close()
 
-	results, err := db.Query("select * from device")
+	results, err := db.Query("select * from devices")
 	if err != nil {
 		log.Fatal("Error when fetching device table rows:", err)
 	}
