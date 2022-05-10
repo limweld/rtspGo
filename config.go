@@ -137,7 +137,7 @@ func loadConfig() *ConfigST {
 	}
 	defer db.Close()
 
-	results, err := db.Query("select * from devices")
+	results, err := db.Query("select id, name, ip, onDeman, protocol, port, username, password from devices")
 	if err != nil {
 		log.Fatal("Error when fetching device table rows:", err)
 	}
